@@ -1,5 +1,6 @@
 from flask import request, jsonify, Blueprint
 from controllers.user_controller import users
+from werkzeug.security import generate_password_hash
 
 user_bp = Blueprint("users", __name__)
 
@@ -17,11 +18,16 @@ def get_user_by_id(id):
 
 @user_bp.route("/register", methods=["POST"])
 def create_user():
+    
     data = request.get_json()
+
+
+    hash = generate_password_hash(data['password'], method='sha256')
     name = data["name"]
     surname = data["surname"]
     email = data["email"]
-    result = users.create_user(name, surname, email)
+    password = hash
+    result = users.create_user(name, surname, email, password)
     return jsonify(result)
 
 

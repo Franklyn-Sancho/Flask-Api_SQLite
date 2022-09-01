@@ -19,11 +19,11 @@ class users:
         return cursor.fetchall()
 
     # registrar um usuário
-    def create_user(name, surname, email):
+    def create_user(name, surname, email, password):
         db = connect_db()
         cursor = db.cursor()
-        sql = "INSERT INTO users(name, surname, email) VALUES (?,?,?)"
-        cursor.execute(sql, [name, surname, email])
+        sql = "INSERT INTO users(name, surname, email, password) VALUES (?,?,?,?)"
+        cursor.execute(sql, [name, surname, email, password])
         db.commit()
         return "Novo usuário cadastrado com sucesso"
 
