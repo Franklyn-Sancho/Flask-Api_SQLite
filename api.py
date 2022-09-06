@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint
 from config.db import new_table
 from controllers.user_controller import users
-from router.router import user_bp
+from router.user_router import user_bp
 
 app = Flask(__name__)
 

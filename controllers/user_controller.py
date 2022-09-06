@@ -1,5 +1,5 @@
 from config.db import connect_db
-
+from uuid import uuid4
 
 class users:
 
